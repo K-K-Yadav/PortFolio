@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Krishna Kumar | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(to right, #0900ff, #ff0061d6);
+    color: white;
+  }
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgb(11 11 11);
+      border-bottom: 3px solid #00ffc6;
+      backdrop-filter: blur(10px);
+  }
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    header h1 span {
+      color: #00FFC6;
+      text-shadow: 0 0 10px #00FFC6;
+    }
+    header p {
+      font-size: 1.5rem;
+      min-height: 30px;
+    }
+    .typing {
+      color: #FFCC00;
+      font-weight: bold;
+      display: inline-block;
+      min-width: 250px;
+    }
+    nav {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 15px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    nav a {
+      color: #00FFC6;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin: 0 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #f9f10d;
+    }
+    .container {
+      width: 85%;
+      margin: auto;
+      text-align: center;
+      padding-bottom: 50px;
+    }
+    .section {
+      padding: 18px;
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    /* About Section */
+    .about p {
+      font-size: 1.2rem;
+      width: 70%;
+      margin: auto;
+      opacity: 0.9;
+      background-color: #fff4004d;
+    }
+    /* Skills Section */
+    .skills-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: rgb(6 255 50 / 0%);
+      padding: 30px;
+      border-radius: 15px;
+      margin: 15px;
+      width: 280px;
+      transition: 0.3s;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(0, 255, 198, 0.5);
+    }
+    .card:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.4);
+    }
+    /* Automated Hover Animation */
+    @keyframes hoverEffect {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 255, 198, 0.5); }
+      50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(0, 255, 198, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 255, 198, 0.5); }
+    }
+    .card.active {
+      animation: hoverEffect 1.5s ease-in-out;
+    }
+    /* Projects Section */
+    .projects-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .project-card {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 15px;
+      width: 300px;
+      transition: 0.3s;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(0, 255, 198, 0.5);
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.3);
+    }
+    /* Education Section */
+    .education {
+      width: 70%;
+      margin: auto;
+      text-align: left;
+    }
+    .education h3 {
+      margin-bottom: 10px;
+      color: #00FFC6;
+    }
+    .education p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    /* Contact Section */
+    .contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .contact input, .contact textarea {
+      width: 70%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .btn {
+      background: #00FFC6;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 0 10px #00FFC6;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hi, I'm <span>Krishna Kumar</span> 👋</h1>
+    <p><span class="typing"></span></p>
+  </header>
+  
+  <nav>
+    <a onclick="showSection('about')">About Me</a>
+    <a onclick="showSection('skills')">Skills</a>
+    <a onclick="showSection('projects')">Projects</a>
+    <a onclick="showSection('education')">Education</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </nav>
+  
+  <div class="container">
+    <!-- About Section -->
+    <section id="about" class="section about active">
+      <h2>About Me</h2>
+<p>
+  🚀 I am a <strong>B.Tech CSE student</strong> passionate about <strong>technology, cybersecurity, and product development</strong>, with a love for <strong>coding, debugging, programming, and framing algorithms</strong>.<br> <br>I enjoy <strong>solving complex problems, brainstorming ideas, and building scalable solutions</strong>. <br><br>My interests include <strong>cybersecurity, AI, web development, workflow automation, and financial markets</strong>. Skilled in <strong>C, Java, Python, MERN stack, and AWS cloud deployment</strong>, I focus on creating <strong>impactful, efficient, and innovative tech solutions</strong>. 💡
+</p>
+
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="card">💻 Python, Java, JavaScript, C++</div>
+        <div class="card">🌐 Web Development (React, Node, Express)</div>
+        <div class="card">🔒 Fundamentals of Cybersecurity & Networks</div>
+        <div class="card">🤖 Machine Learning & AI</div>
+        <div class="card">MySQL & MongoDB</div>
+      </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Remote Appointment Booking and Tracking System</h3>
+          <p>An prototype aimed at solving the problem of waiting in long queues at the clinics for consultations.</p>
+        </div>
+        <div class="project-card">
+          <h3>ML Model for handwritten digit detection</h3>
+          <p>A machine learning project using Python to predict the handwritten digits 0-9 .</p>
+        </div>
+        <div class="project-card">
+          <h3>IoT Biometric Attendance System</h3>
+          <p>A smart fingerprint system integrating IoT devices with remote database logs for convenience and security.</p>
+        </div>
+        <div class="project-card">
+          <h3>Payment Manager</h3>
+          <p>A simple yet powerful tool for allowing to track, record and send payment requests by specify the amount via UPI for easy payment collection.</p>
+        </div>
+        <div class="project-card">
+          <h3>Image-to-Text</h3>
+          <p>A parallel processing based python script to boost the conversion to image to text for pdfs.</p>
+        </div>
+        <div class="project-card">
+          <h3>Trading Simulator</h3>
+          <p>Created a simulator to test trading strategy using live API data from upstox and python script.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <div class="education">
+        <h3>B.Tech in Computer Science & Engineering</h3>
+        <p><strong>REVA University , Bangalore</strong> • 2022 - Present<br>
+          Pursuing a rigorous curriculum in computer science, with special interests in cybersecurity, software development, and emerging technologies.</p>
+        <h3>Pre-University</h3>
+        <p><strong>MES PU College of Arts Commerce and Science</strong> • 2021 Passout<br>
+          Excelled in PCMB subjects with a strong foundation in mathematics and science.</p>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2>Contact Me</h2>
+      <form class="contact">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button class="btn" type="submit" onclick="redirectToWhatsApp(event)">
+          <i class="fab fa-whatsapp"></i> Reach Out on WhatsApp
+        </button>
+      </form>
+    
+      <div class="contact-options">
+        <button class="btn gmail-btn" onclick="redirectToGmail()">
+          📧 Contact via Gmail @ sendtokky@gmail.com
+        </button>
+      </div>
+    
+      <script>
+        function redirectToWhatsApp(event) {
+          event.preventDefault(); 
+    
+          var name = document.getElementById("name").value;
+          var email = document.getElementById("email").value;
+          var message = document.getElementById("message").value;
+    
+          var whatsappMessage = `Hello, my name is ${name}. My email is ${email}. Message: ${message}`;
+          var encodedMessage = encodeURIComponent(whatsappMessage);
+          var whatsappURL = `https://wa.me/919019945916?text=${encodedMessage}`;
+    
+          window.location.href = whatsappURL;
+        }
+    
+        function redirectToGmail() {
+          var email = "sendtokky@gmail.com";
+          var subject = "Contact Inquiry";
+          var body = "Hello, I would like to get in touch.";
+    
+          var mailtoURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.open(mailtoURL, "_blank");
+        }
+      </script>
+    
+      <!-- FontAwesome for WhatsApp Icon -->
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+      <style>
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          padding: 10px 15px;
+          margin: 10px 5px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+          text-decoration: none;
+        }
+    
+        .btn i {
+          margin-right: 8px;
+        }
+    
+        .contact-options {
+          margin-top: 15px;
+        }
+    
+        .gmail-btn {
+          background-color: #db4437;
+          color: white;
+        }
+    
+        .btn:hover {
+          opacity: 0.8;
+        }
+      </style>
+    </section>
+    
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Krishna Kumar | Designed with ❤️</p>
+  </footer>
+  
+  <script>
+    // Typing effect for header tagline
+    const words = [
+      "B.Tech(CS Major) - 6th Sem",
+      "Cybersecurity Enthusiast",
+      "Web Developer",
+      "Tech & Finance Explorer",
+      "Problem Solver"
+    ];
+    let i = 0, j = 0, isDeleting = false;
+    function typeEffect() {
+      const currentWord = words[i];
+      document.querySelector(".typing").textContent = currentWord.substring(0, j);
+      if (!isDeleting) {
+        if (j < currentWord.length) {
+          j++;
+          setTimeout(typeEffect, 50);
+        } else {
+          isDeleting = true;
+          setTimeout(typeEffect, 800);
+        }
+      } else {
+        if (j > 0) {
+          j--;
+          setTimeout(typeEffect, 25);
+        } else {
+          isDeleting = false;
+          i = (i + 1) % words.length;
+          setTimeout(typeEffect, 300);
+        }
+      }
+    }
+    typeEffect();
+
+    // Navigation section switching
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Automated hover effect for skills section
+    function cycleSkills() {
+      const cards = document.querySelectorAll('.skills-grid .card');
+      let index = 0;
+      function activateCard() {
+        cards.forEach(card => card.classList.remove('active'));
+        cards[index].classList.add('active');
+        index = (index + 1) % cards.length;
+        setTimeout(activateCard, 1500);
+      }
+      activateCard();
+    }
+    cycleSkills();
+  </script>
+</body>
+</html>
